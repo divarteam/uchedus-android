@@ -16,8 +16,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -25,7 +23,7 @@ android {
             keyAlias = "androiddebugkey"
             keyPassword = "android"
             storePassword = "android"
-            storeFile = File("~/.android/debug.keystore")
+            storeFile = File("C:/Users/brigh/.android/debug.keystore")
         }
     }
 
@@ -37,17 +35,18 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
+            signingConfig = signingConfigs.getAt("release")
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = "17"
+        freeCompilerArgs = listOf("-Xallow-result-return-type")
     }
 
     kapt {
@@ -85,9 +84,6 @@ dependencies {
     val espressoCoreVersion = "3.5.1"
     val gsonVersion = "2.10.1"
 
-    testImplementation("junit:junit:$junitVersion")
-    androidTestImplementation("androidx.test.ext:junit:$junitAndroidVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoCoreVersion")
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
     implementation("androidx.core:core-ktx:$coreKtxVersion")
@@ -99,12 +95,15 @@ dependencies {
     implementation("androidx.room:room-rxjava2:$roomVersion")
     implementation("com.airbnb.android:epoxy:$epoxyVersion")
     implementation("com.facebook.shimmer:shimmer:$shimmerVersion")
+    implementation("com.github.furkanaskin:ClickablePieChart:1.0.9")
+    implementation("com.airbnb.android:lottie:6.1.0")
     implementation("com.github.bumptech.glide:glide:$glideVersion")
     implementation("com.google.android.material:material:$materialVersion")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     implementation("com.google.code.gson:gson:$gsonVersion")
     implementation("com.jsibbold:zoomage:$zoomageVersion")
     implementation("com.squareup.okhttp3:okhttp:$okHttp3Version")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okHttp3Version")
     implementation("de.hdodenhof:circleimageview:$circleImageViewVersion")
     implementation("org.jsoup:jsoup:$jsoupVersion")
     implementation("io.reactivex.rxjava2:rxandroid:$rxAndroidVersion")
@@ -117,4 +116,5 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-scalars:$retrofitVersion")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
 }

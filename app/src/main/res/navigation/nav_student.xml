@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_student"
+    app:startDestination="@id/coursesFragment">
+
+    <fragment
+        android:id="@+id/coursesFragment"
+        android:name="ru.divarteam.uchedus.ui.courses.CoursesFragment"
+        android:label="CoursesFragment"
+        tools:layout="@layout/fragment_courses">
+        <action
+            android:id="@+id/action_coursesFragment_to_courseFragment"
+            app:destination="@id/courseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="ru.divarteam.uchedus.ui.course.CourseFragment"
+        android:label="CourseFragment"
+        tools:layout="@layout/fragment_course">
+
+        <argument
+            android:name="courseIntId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.divarteam.uchedus.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="user_int_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        tools:layout="@layout/fragment_products"
+        android:name="ru.divarteam.uchedus.ui.product.ProductFragment"
+        android:label="ProductFragment" />
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="ru.divarteam.uchedus.ui.stats.StatsFragment"
+        tools:layout="@layout/fragment_stats"
+        android:label="StatsFragment" />
+</navigation>
